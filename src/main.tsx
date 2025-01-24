@@ -6,6 +6,6 @@ import MainPage from './pages/MainPage'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MainPage />
+    <LoginPage />
   </StrictMode>,
 )
