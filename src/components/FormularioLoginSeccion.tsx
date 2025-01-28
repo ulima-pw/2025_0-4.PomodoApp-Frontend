@@ -1,4 +1,5 @@
 const FormularioLoginSeccion = () => {
+    
     return <form>
         <div>
             <label className="form-label">Usuario:</label>
