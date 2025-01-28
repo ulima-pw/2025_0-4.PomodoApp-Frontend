@@ -1,6 +1,10 @@
 import { useState } from "react"
 
-const FormularioLoginSeccion = () => {
+interface FormularioLoginSeccionProps {
+    onLogin : (usuario : string, password:string) => void
+}
+
+const FormularioLoginSeccion = (props : FormularioLoginSeccionProps) => {
     const [usuario, setUsuario] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
@@ -29,7 +33,10 @@ const FormularioLoginSeccion = () => {
         </div>
         <button id="margen-superior-boton" 
             className="btn btn-success" 
-            type="button">
+            type="button"
+            onClick={ () => {
+                props.onLogin(usuario, password)
+            } }>
                 Ingresar
         </button>
     </form>

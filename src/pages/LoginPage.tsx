@@ -19,7 +19,7 @@ const LoginPage = () => {
         <div className="col"></div>
         <div className="col">
             <TitulosSeccion />
-            <FormularioLoginSeccion />
+            <FormularioLoginSeccion onLogin={ loginHandler }/>
             <Link to={"/main"} className="btn btn-danger">Ir a MainPage</Link>
         </div>
         <div className="col"></div>
