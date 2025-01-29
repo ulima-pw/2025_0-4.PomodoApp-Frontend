@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import MenuOpciones from "../components/MenuOpciones"
 
 const MainPage = () => {
     const navigate = useNavigate()
@@ -9,7 +10,7 @@ const MainPage = () => {
                 <MenuOpciones />
             </div>
             <div className="col-md-8">
-                <ListaProyectos />
+                <ListadoProyectos />
             </div>
         </div>
         <Footer />
