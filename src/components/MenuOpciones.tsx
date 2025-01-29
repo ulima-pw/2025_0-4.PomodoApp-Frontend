@@ -6,7 +6,7 @@ const MenuOpciones = () => {
         <li className="list-group-item ">
             Histórico
         </li>
-        <li className="list-group-item ">
+        <li className="list-group-item">
             Configuración
         </li>
         <li className="list-group-item ">
