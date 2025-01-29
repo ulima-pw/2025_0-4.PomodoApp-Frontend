@@ -1,4 +1,16 @@
-const ListadoProyectos = () => {
+
+interface ListadoProyectosItem {
+    id : number;
+    nombre : string;
+    nroPom : number;
+    status : string; // TODO: number
+}
+
+interface ListadoProyectosProps {
+    data : ListadoProyectosItem[]
+}
+
+const ListadoProyectos = (props : ListadoProyectosProps) => {
     return <>
         <h2>
             Proyectos
