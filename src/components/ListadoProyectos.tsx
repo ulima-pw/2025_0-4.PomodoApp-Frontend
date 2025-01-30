@@ -30,38 +30,26 @@ const ListadoProyectos = (props : ListadoProyectosProps) => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Proy 1</td>
-                    <td>1</td>
-                    <td>Iniciado</td>
-                    <td>
-                        <button type="button"
-                                className="btn btn-primary me-2">
-                            I
-                        </button>
-                        <button type="button"
-                                className="btn btn-primary">
-                            E
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Proy 1</td>
-                    <td>1</td>
-                    <td>Iniciado</td>
-                    <td>
-                        <button type="button"
-                                className="btn btn-primary me-2">
-                            I
-                        </button>
-                        <button type="button"
-                                className="btn btn-primary">
-                            E
-                        </button>
-                    </td>
-                </tr>
+                {
+                    props.data.map((proyecto : ListadoProyectosItem) => {
+                        return <tr>
+                            <td>{ proyecto.id }</td>
+                            <td>{ proyecto.nombre }</td>
+                            <td>{ proyecto.nroPom }</td>
+                            <td>{ proyecto.status }</td>
+                            <td>
+                                <button type="button"
+                                        className="btn btn-primary me-2">
+                                    I
+                                </button>
+                                <button type="button"
+                                        className="btn btn-primary">
+                                    E
+                                </button>
+                            </td>
+                        </tr>
+                    })
+                }
             </tbody>
         </table>
     </>

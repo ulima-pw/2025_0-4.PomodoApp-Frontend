@@ -5,6 +5,23 @@ import ListadoProyectos from "../components/ListadoProyectos"
 
 const MainPage = () => {
     const navigate = useNavigate()
+
+    // TODO: A manejarse por backend
+    const proyectos = [
+        {
+            id : 1,
+            nombre : "Proy A",
+            nroPom : 2,
+            status : "Iniciado"
+        },
+        {
+            id : 2,
+            nombre : "Proy B",
+            nroPom : 0,
+            status : "Creado"
+        }
+    ]
+
     return <div className="container">
         <h1>Pomodoro UL</h1>
         <div className="row mb-4">
@@ -12,7 +29,7 @@ const MainPage = () => {
                 <MenuOpciones />
             </div>
             <div className="col-md-9">
-                <ListadoProyectos />
+                <ListadoProyectos data={ proyectos }/>
             </div>
         </div>
         <Footer />
