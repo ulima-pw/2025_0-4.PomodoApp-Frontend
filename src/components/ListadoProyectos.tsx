@@ -1,8 +1,8 @@
 
-interface ListadoProyectosItem {
+export interface ListadoProyectosItem {
     id : number;
     nombre : string;
-    nroPom : number;
+    nro_pom : number;
     status : string; // TODO: number
 }
 
@@ -35,7 +35,7 @@ const ListadoProyectos = (props : ListadoProyectosProps) => {
                         return <tr>
                             <td>{ proyecto.id }</td>
                             <td>{ proyecto.nombre }</td>
-                            <td>{ proyecto.nroPom }</td>
+                            <td>{ proyecto.nro_pom }</td>
                             <td>{ proyecto.status }</td>
                             <td>
                                 <button type="button"
