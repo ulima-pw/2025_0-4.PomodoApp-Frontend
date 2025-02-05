@@ -18,19 +18,27 @@ const LoginPage = () => {
         }
     })
 
-    const loginHandler = (usuario : string, password:string) => {
-        if (usuario == "PW" && password == "123") {
-            // Login correcto
-            const user = {
-                usuario : usuario,
-                password : password
+    const loginHandler = async (usuario : string, password:string) => {
+        const userData = {
+            usuario : usuario,
+            password : password
+        }
+        const resp = await fetch("http://localhost:5000/login", {
+            method : "POST",
+            body : JSON.stringify(userData),
+            headers: {
+                "Content-Type": "application/json",
             }
-            const userJSON = JSON.stringify(user)
+        })
+        const data = await resp.json()
+        if (data.msg == "") {
+            // Login correcto
+            const userJSON = JSON.stringify(userData)
             console.log(userJSON)
             sessionStorage.setItem("usuario", userJSON)
             navigate("/main")
         }else {
-            // Login incorrecto
+            // Error en el login
             setShowModal(true)
         }
     }
