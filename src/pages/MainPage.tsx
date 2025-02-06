@@ -8,11 +8,17 @@ const MainPage = () => {
     const [proyectos, setProyectos] = useState<ListadoProyectosItem[]>([])
 
     const httpObtenerProyectos = async () => {
-        const url = " https://script.google.com/macros/s/AKfycbwnViGs2imFRKitmPDKS1PZvZmkrIS3kBbMgnhv-vSRWBk0KGfLbIyeCdOrYzLsh-mR/exec?entity=proyectos"
+        const url = "http://localhost:5000/proyectos"
         const resp = await fetch(url)
-        const listaProyectos = await resp.json()
-        setProyectos(listaProyectos)
-        console.log(listaProyectos)
+        const data = await resp.json()
+        if (data.msg == "") {
+            const listaProyectos = data.proyectos
+            setProyectos(listaProyectos)
+            console.log(listaProyectos)
+        }else {
+            console.error(`Error al obtener proyectos: ${data.msg}`)
+        }
+        
     }
 
     useEffect( ()=> {

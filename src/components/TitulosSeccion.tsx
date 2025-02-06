@@ -2,6 +2,9 @@ const TitulosSeccion = () => {
     return <>
         <h1>PomodoroApp</h1>
         <h2>Login</h2>
+        <img
+            style={{ width: "100%" }} 
+            src="http://localhost:5000/logo.png" />
     </>
 }
 
