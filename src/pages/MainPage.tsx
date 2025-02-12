@@ -23,7 +23,7 @@ const MainPage = () => {
 
     useEffect( ()=> {
         httpObtenerProyectos()
-    })
+    },[])
     
     /*const promesa = fetch(url)
     promesa.then( (resp : Response)=>{
