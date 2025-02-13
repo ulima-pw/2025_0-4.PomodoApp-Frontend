@@ -8,6 +8,7 @@ export interface ListadoProyectosItem {
 
 interface ListadoProyectosProps {
     data : ListadoProyectosItem[]
+    onOpenModal : () => void
 }
 
 const ListadoProyectos = (props : ListadoProyectosProps) => {
@@ -15,7 +16,10 @@ const ListadoProyectos = (props : ListadoProyectosProps) => {
         <h2>
             Proyectos
             <button type="button"
-                    className="btn btn-primary">
+                    className="btn btn-primary"
+                    onClick={ () => {
+                        props.onOpenModal()
+                    } }>
                 +
             </button>
         </h2>

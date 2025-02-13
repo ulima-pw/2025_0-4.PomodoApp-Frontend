@@ -7,6 +7,25 @@ import ModalFormularioProyecto from "../components/ModalFormularioProyecto"
 
 const MainPage = () => {
     const [proyectos, setProyectos] = useState<ListadoProyectosItem[]>([])
+    const [showModalProyecto , setShowModalProyecto] = useState<boolean>(false)
+
+    const httpGuardarProyecto = async (nombreProyecto : string, categoriaId : number) => {
+        const url = "http://localhost:5000/proyectos"
+        const resp = await fetch(url, {
+            method : "POST",
+            body : JSON.stringify({
+                nombre : nombreProyecto,
+                categoria : categoriaId
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            }
+        })
+        const data = await resp.json()
+        if (data.msg == "") {
+            closeModalProyecto()
+        }
+    }
 
     const httpObtenerProyectos = async () => {
         const url = "http://localhost:5000/proyectos"
@@ -25,6 +44,14 @@ const MainPage = () => {
     useEffect( ()=> {
         httpObtenerProyectos()
     },[])
+
+    const openModalProyecto = () => {
+        setShowModalProyecto(true)
+    }
+
+    const closeModalProyecto = () => {
+        setShowModalProyecto(false)
+    }   
     
     /*const promesa = fetch(url)
     promesa.then( (resp : Response)=>{
@@ -51,11 +78,13 @@ const MainPage = () => {
                 <MenuOpciones />
             </div>
             <div className="col-md-9">
-                <ListadoProyectos data={ proyectos }/>
+                <ListadoProyectos data={ proyectos }
+                    onOpenModal={ openModalProyecto }/>
             </div>
         </div>
         <Footer />
-        <ModalFormularioProyecto showModal={ true } />
+        <ModalFormularioProyecto showModal={ showModalProyecto }
+            onCloseModal={ closeModalProyecto } />
 
         <button type="button"
         className="btn btn-danger"
