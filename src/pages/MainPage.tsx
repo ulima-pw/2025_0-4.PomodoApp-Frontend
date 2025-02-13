@@ -84,7 +84,10 @@ const MainPage = () => {
         </div>
         <Footer />
         <ModalFormularioProyecto showModal={ showModalProyecto }
-            onCloseModal={ closeModalProyecto } />
+            onCloseModal={ closeModalProyecto }
+            onGuardarProyecto={ (nombre : string, categoriaId : number) => {
+                httpGuardarProyecto(nombre, categoriaId)
+            }} />
 
         <button type="button"
         className="btn btn-danger"

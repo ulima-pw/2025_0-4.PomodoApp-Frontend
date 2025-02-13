@@ -3,6 +3,7 @@ import { useState } from "react"
 interface ModalFormularioProyectoProps {
     showModal : boolean
     onCloseModal : () => void
+    onGuardarProyecto : (nombre: string, categoriaId : number) => void
 }
 
 const ModalFormularioProyecto = (props : ModalFormularioProyectoProps) => {
@@ -47,7 +48,10 @@ const ModalFormularioProyecto = (props : ModalFormularioProyectoProps) => {
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-success">
+                        <button type="button" className="btn btn-success"
+                        onClick={ () => {
+                            props.onGuardarProyecto(nombreProyecto, categoriaId)
+                        }}>
                             Guardar
                         </button>
                         <button type="button" className="btn btn-danger"
