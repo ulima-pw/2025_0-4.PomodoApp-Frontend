@@ -3,6 +3,7 @@ import MenuOpciones from "../components/MenuOpciones"
 import Footer from "../components/Footer"
 import ListadoProyectos, { ListadoProyectosItem } from "../components/ListadoProyectos"
 import { useEffect, useState } from "react"
+import ModalFormularioProyecto from "../components/ModalFormularioProyecto"
 
 const MainPage = () => {
     const [proyectos, setProyectos] = useState<ListadoProyectosItem[]>([])
@@ -54,6 +55,7 @@ const MainPage = () => {
             </div>
         </div>
         <Footer />
+        <ModalFormularioProyecto showModal={ true } />
 
         <button type="button"
         className="btn btn-danger"
