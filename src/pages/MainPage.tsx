@@ -85,8 +85,9 @@ const MainPage = () => {
         <Footer />
         <ModalFormularioProyecto showModal={ showModalProyecto }
             onCloseModal={ closeModalProyecto }
-            onGuardarProyecto={ (nombre : string, categoriaId : number) => {
-                httpGuardarProyecto(nombre, categoriaId)
+            onGuardarProyecto={ async (nombre : string, categoriaId : number) => {
+                await httpGuardarProyecto(nombre, categoriaId)
+                await httpObtenerProyectos()
             }} />
 
         <button type="button"
