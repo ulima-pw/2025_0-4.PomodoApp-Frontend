@@ -12,6 +12,7 @@ export interface ListadoProyectosItem {
 interface ListadoProyectosProps {
     data : ListadoProyectosItem[]
     onOpenModal : () => void
+    onEliminar : (id : number) => void
 }
 
 const ListadoProyectos = (props : ListadoProyectosProps) => {
@@ -58,7 +59,10 @@ const ListadoProyectos = (props : ListadoProyectosProps) => {
                                     I
                                 </button>
                                 <button type="button"
-                                        className="btn btn-primary">
+                                        className="btn btn-primary"
+                                        onClick={ () => {
+                                            props.onEliminar(proyecto.id)
+                                        }}>
                                     E
                                 </button>
                             </td>

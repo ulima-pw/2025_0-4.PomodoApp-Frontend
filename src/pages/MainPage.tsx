@@ -53,6 +53,19 @@ const MainPage = () => {
         }
     }
 
+    const httpEliminarProyecto = async (id : number) => {
+        const url = "http://localhost:5000/proyectos?id=" + id
+        const resp = await fetch(url, {
+            method : "DELETE"
+        })
+        const data = await resp.json()
+        if (data.msg == "") {
+            httpObtenerProyectos()
+        }else {
+            console.error(`Error al eliminar un Proyecto: ${data.msg}`)
+        }
+    }
+
     useEffect( ()=> {
         httpObtenerProyectos()
         httpObtenerCategorias()
@@ -92,7 +105,10 @@ const MainPage = () => {
             </div>
             <div className="col-md-9">
                 <ListadoProyectos data={ proyectos }
-                    onOpenModal={ openModalProyecto }/>
+                    onOpenModal={ openModalProyecto }
+                    onEliminar={  async (id : number) => {
+                        await httpEliminarProyecto(id)
+                    }}/>
             </div>
         </div>
         <Footer />
@@ -105,7 +121,7 @@ const MainPage = () => {
             }} />
 
         <button type="button"
-        className="btn btn-danger"
+                className="btn btn-danger"
                 onClick={ () => {
                     sessionStorage.removeItem("usuario")
                     navigate("/")
