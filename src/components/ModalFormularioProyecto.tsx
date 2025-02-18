@@ -1,9 +1,15 @@
 import { useState } from "react"
 
+export interface Categoria {
+    id : number
+    nombre : string
+}
+
 interface ModalFormularioProyectoProps {
     showModal : boolean
     onCloseModal : () => void
     onGuardarProyecto : (nombre: string, categoriaId : number) => void
+    categorias : Categoria[]
 }
 
 const ModalFormularioProyecto = (props : ModalFormularioProyectoProps) => {
@@ -41,8 +47,13 @@ const ModalFormularioProyecto = (props : ModalFormularioProyectoProps) => {
                                     value={categoriaId}
                                     onChange={ categoriaIdChangeHandler }>
                                     <option value={0}>----- Seleccionar -----</option>
-                                    <option value={1}>ULima</option>
-                                    <option value={2}>Personal</option>
+                                    {
+                                        props.categorias.map((cat : Categoria) => {
+                                            return <option value={cat.id}>
+                                                {cat.nombre}
+                                            </option>
+                                        })
+                                    }
                                 </select>
                             </div>
                         </form>

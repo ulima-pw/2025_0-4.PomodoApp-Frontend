@@ -3,10 +3,11 @@ import MenuOpciones from "../components/MenuOpciones"
 import Footer from "../components/Footer"
 import ListadoProyectos, { ListadoProyectosItem } from "../components/ListadoProyectos"
 import { useEffect, useState } from "react"
-import ModalFormularioProyecto from "../components/ModalFormularioProyecto"
+import ModalFormularioProyecto, { Categoria } from "../components/ModalFormularioProyecto"
 
 const MainPage = () => {
     const [proyectos, setProyectos] = useState<ListadoProyectosItem[]>([])
+    const [categorias, setCategorias] = useState<Categoria[]>([])
     const [showModalProyecto , setShowModalProyecto] = useState<boolean>(false)
 
     const httpGuardarProyecto = async (nombreProyecto : string, categoriaId : number) => {
@@ -38,11 +39,23 @@ const MainPage = () => {
         }else {
             console.error(`Error al obtener proyectos: ${data.msg}`)
         }
-        
+    }
+
+    const httpObtenerCategorias = async () => {
+        const url = "http://localhost:5000/categorias"
+        const resp = await fetch(url)
+        const data = await resp.json()
+        if (data.msg == "") {
+            const listaCategorias = data.categorias
+            setCategorias(listaCategorias)
+        }else {
+            console.error(`Error al obtener categorias: ${data.msg}`)
+        }
     }
 
     useEffect( ()=> {
         httpObtenerProyectos()
+        httpObtenerCategorias()
     },[])
 
     const openModalProyecto = () => {
@@ -84,6 +97,7 @@ const MainPage = () => {
         </div>
         <Footer />
         <ModalFormularioProyecto showModal={ showModalProyecto }
+            categorias={ categorias }
             onCloseModal={ closeModalProyecto }
             onGuardarProyecto={ async (nombre : string, categoriaId : number) => {
                 await httpGuardarProyecto(nombre, categoriaId)
