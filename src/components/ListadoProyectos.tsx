@@ -1,8 +1,11 @@
+import { Categoria } from "./ModalFormularioProyecto";
 
 export interface ListadoProyectosItem {
     id : number;
     nombre : string;
     nro_pom : number;
+    categoriaId : number;
+    categoria : Categoria
     status : string; // TODO: number
 }
 
@@ -29,6 +32,7 @@ const ListadoProyectos = (props : ListadoProyectosProps) => {
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Nro Pom</th>
+                    <th>Categoría</th>
                     <th>Status</th>
                     <th>Acciones</th>
                 </tr>
@@ -40,6 +44,13 @@ const ListadoProyectos = (props : ListadoProyectosProps) => {
                             <td>{ proyecto.id }</td>
                             <td>{ proyecto.nombre }</td>
                             <td>{ proyecto.nro_pom }</td>
+                            <td>
+                                { 
+                                    proyecto.categoria != null 
+                                        ? proyecto.categoria.nombre 
+                                        : "-"
+                                }
+                            </td>
                             <td>{ proyecto.status }</td>
                             <td>
                                 <button type="button"
