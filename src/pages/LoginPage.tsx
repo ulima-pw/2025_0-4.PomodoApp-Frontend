@@ -1,9 +1,11 @@
-import { Link, NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import FormularioLoginSeccion from "../components/FormularioLoginSeccion"
 import TitulosSeccion from "../components/TitulosSeccion"
 import "./LoginPage.css"
 import { useEffect, useState } from "react"
 import ModalFormularioLogin from "../components/ModalFormularioLogin"
+
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:5000"
 
 const LoginPage = () => {
     const navigate = useNavigate()
@@ -23,7 +25,7 @@ const LoginPage = () => {
             usuario : usuario,
             password : password
         }
-        const resp = await fetch("http://localhost:5000/usuarios/login", {
+        const resp = await fetch(URL_BACKEND + "/usuarios/login", {
             method : "POST",
             body : JSON.stringify(userData),
             headers: {

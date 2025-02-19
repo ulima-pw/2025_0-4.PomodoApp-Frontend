@@ -5,13 +5,15 @@ import ListadoProyectos, { ListadoProyectosItem } from "../components/ListadoPro
 import { useEffect, useState } from "react"
 import ModalFormularioProyecto, { Categoria } from "../components/ModalFormularioProyecto"
 
+const URL_BACKEND = import.meta.env.VITE_URL_BACKEND || "http://localhost:5000"
+
 const MainPage = () => {
     const [proyectos, setProyectos] = useState<ListadoProyectosItem[]>([])
     const [categorias, setCategorias] = useState<Categoria[]>([])
     const [showModalProyecto , setShowModalProyecto] = useState<boolean>(false)
 
     const httpGuardarProyecto = async (nombreProyecto : string, categoriaId : number) => {
-        const url = "http://localhost:5000/proyectos"
+        const url = URL_BACKEND + "/proyectos"
         const resp = await fetch(url, {
             method : "POST",
             body : JSON.stringify({
@@ -29,7 +31,7 @@ const MainPage = () => {
     }
 
     const httpObtenerProyectos = async () => {
-        const url = "http://localhost:5000/proyectos"
+        const url = URL_BACKEND + "/proyectos"
         const resp = await fetch(url)
         const data = await resp.json()
         if (data.msg == "") {
@@ -42,7 +44,7 @@ const MainPage = () => {
     }
 
     const httpObtenerCategorias = async () => {
-        const url = "http://localhost:5000/categorias"
+        const url = URL_BACKEND + "/categorias"
         const resp = await fetch(url)
         const data = await resp.json()
         if (data.msg == "") {
@@ -54,7 +56,7 @@ const MainPage = () => {
     }
 
     const httpEliminarProyecto = async (id : number) => {
-        const url = "http://localhost:5000/proyectos?id=" + id
+        const url = URL_BACKEND + "/proyectos?id=" + id
         const resp = await fetch(url, {
             method : "DELETE"
         })

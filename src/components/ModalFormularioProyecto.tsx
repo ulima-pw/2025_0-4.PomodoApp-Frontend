@@ -57,6 +57,28 @@ const ModalFormularioProyecto = (props : ModalFormularioProyectoProps) => {
                                 </select>
                             </div>
                         </form>
+                        <hr/>
+                        <h5>Equipo:</h5>
+                        <form>
+                            <div className="row">
+                                <div className="col-10">
+                                    <select className="form-select">
+                                        <option value={0}>----- Seleccionar -----</option>
+                                        <option value={1}>Edgar</option>
+                                        <option value={2}>Juan</option>
+                                        <option value={3}>Pepe</option>
+                                    </select>
+                                </div>
+                                <div className="col-2">
+                                    <button className="btn btn-primary">+</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div className="list-group mt-3">
+                            <div className="list-group-item">
+                                Edgar
+                            </div>
+                        </div>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-success"
