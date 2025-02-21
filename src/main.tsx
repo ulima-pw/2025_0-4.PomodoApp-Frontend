@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/2025_0-4.PomodoApp-Frontend'>
       <Routes>
         <Route path='/' element={ <LoginPage/> } />
         <Route path='/main' element={ <MainPage />} />
